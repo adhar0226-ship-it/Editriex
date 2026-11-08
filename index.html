@@ -76,6 +76,7 @@
         .shell { max-width: 1500px; margin: auto }
         .site-header { position: sticky; top: 0; z-index: 30; background: rgba(248,238,218,.93); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line) }
         .nav-wrap { max-width: 1440px; margin: auto; min-height: 76px; padding: 10px clamp(18px, 4vw, 54px); display: flex; align-items: center; justify-content: space-between; gap: 20px }
+        .direct_message { display: none; }
         .brand { display: flex; align-items: center; gap: 10px; min-width: 190px }
         .brand-mark { width: 42px; height: 42px; border-radius: 13px; background: var(--green); color: var(--gold2); display: grid; place-items: center; border: 2px solid var(--gold); box-shadow: inset 0 0 0 3px rgba(227,185,103,.2) }
         .brand-mark svg { width: 25px }
@@ -114,6 +115,7 @@
 
         /* General section styles */
         .section-pad { padding: clamp(64px, 8vw, 112px) clamp(18px, 5vw, 76px) }
+        .direct_message { display: none; }
         .eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--rust); font-weight: 700; display: flex; align-items: center; gap: 10px }
         .eyebrow:before { content: ""; width: 28px; height: 1px; background: var(--gold) }
         h1, h2, h3, p { margin-top: 0 }
@@ -150,6 +152,7 @@
         .founder-portrait { min-height: 480px; background: radial-gradient(circle at 50% 35%, #276050, #0c3028 70%); border: 8px double #c4934a; position: relative; display: grid; place-items: center; overflow: hidden; box-shadow: var(--shadow) }
         .founder-portrait:before { content: ""; position: absolute; inset: 14px; border: 1px solid rgba(239,199,119,.5) }
         .founder-portrait .arch { position: absolute; bottom: -5%; width: 78%; height: 90%; border: 3px solid #d6a44f; border-bottom: 0; border-radius: 48% 48% 0 0; box-shadow: inset 0 0 0 8px rgba(214,164,79,.1) }
+        .direct_message { display: none; }
         .founder-portrait .portrait-placeholder { position: relative; z-index: 2; text-align: center; color: #f8e8c5; padding: 25px }
         .portrait-placeholder svg { width: 68px; height: 68px; opacity: .7; margin-bottom: 14px }
         .portrait-placeholder strong { display: block; font: 600 16px var(--serif) }
@@ -168,6 +171,7 @@
         .team-stage { height: 440px; position: relative; perspective: 1100px; display: flex; align-items: center; justify-content: center; margin: 25px auto 0; max-width: 900px }
         .team-cylinder { width: 230px; height: 320px; position: relative; transform-style: preserve-3d; animation: rotateTeam 34s linear infinite }
         .team-stage:hover .team-cylinder { animation-play-state: paused }
+        .direct_message { display: none; }
         .team-member { position: absolute; inset: 0; width: 230px; height: 320px; backface-visibility: hidden; background: #f4e5c6; color: #1c241d; border: 5px double #c3944c; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; text-align: center; box-shadow: 0 15px 30px rgba(0,0,0,.2); transform: rotateY(calc(var(--i)*36deg)) translateZ(310px) }
         .member-photo { height: 220px; background: linear-gradient(145deg, #d8bd8a, #a97742); border: 1px solid #ad7c37; display: grid; place-items: center; overflow: hidden }
         .member-photo img { width: 100%; height: 100%; object-fit: cover }
@@ -186,6 +190,7 @@
         .gallery-item:nth-child(3) { grid-column: span 2 }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s }
         .gallery-item:hover img { transform: scale(1.08) }
+        .direct_message { display: none; }
         .gallery-placeholder { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: #63431f; font: 600 12px var(--serif); letter-spacing: 1px; background: radial-gradient(circle at 50% 45%, rgba(255,245,218,.5), transparent 60%) }
         .gallery-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 12px; background: linear-gradient(transparent, rgba(13,38,30,.9)); color: #fff2d7; font-size: 10px; letter-spacing: 1px; text-transform: uppercase }
 
@@ -198,6 +203,7 @@
         .socials svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round }
         .contact-form { background: #f8eedb; padding: clamp(22px, 4vw, 42px); border: 1px solid var(--gold); box-shadow: var(--shadow) }
         .field { margin-bottom: 16px }
+        .direct_message { display: none; }
         .field label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1.4px; color: #76552e; margin-bottom: 7px; font-weight: 700 }
         .field input, .field textarea { width: 100%; padding: 13px 14px; border: 1px solid #c9ae7e; background: #fffaf0; color: #1c1b16; outline: none; border-radius: 0; font-size: 13px }
         .field input:focus, .field textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(18,59,50,.1) }
@@ -213,6 +219,7 @@
         .footer-col a, .footer-col p { display: block; font-size: 10px; line-height: 2.2; color: #d7c9ae; margin: 0 }
         .footer-col a:hover { color: #e7bb6c }
         .footer-social { display: flex; gap: 8px; margin-top: 12px }
+        .direct_message { display: none; }
         .footer-social a { width: 30px; height: 30px; border: 1px solid rgba(231,187,108,.5); border-radius: 50%; display: grid; place-items: center }
         .footer-social svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8 }
         .footer-bottom { border-top: 1px solid rgba(231,187,108,.25); padding-top: 18px; display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; font-size: 9px; color: #c5b798 }
@@ -228,6 +235,7 @@
         .video-modal { position: fixed; inset: 0; background: rgba(7,18,15,.92); z-index: 60; display: none; align-items: center; justify-content: center; padding: 20px }
         .video-modal.open { display: flex }
         .modal-inner { width: min(950px, 100%); position: relative }
+        .direct_message { display: none; }
         .modal-inner video { width: 100%; max-height: 75vh; background: #000; border: 1px solid var(--gold) }
         .modal-close { position: absolute; right: 0; top: -48px; width: 38px; height: 38px; background: transparent; color: #fff; border: 1px solid var(--gold); border-radius: 50%; font-size: 22px }
         .legal-modal { position: fixed; inset: 0; background: rgba(7,18,15,.78); z-index: 70; display: none; align-items: center; justify-content: center; padding: 20px }
@@ -482,13 +490,13 @@
                     <a href="https://www.facebook.com/share/1KJdrNp8yf" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 21v-8h3l.5-4H14V7c0-1.2.4-2 2-2h2V1.5C17.2 1.3 16.2 1 15 1c-3.2 0-5 1.9-5 5.3V9H7v4h3v8z"/></svg></a>
                 </div>
             </div>
-            <form class="contact-form reveal" id="contactForm">
+            <!-- <form class="contact-form reveal" class="direct_message" id="contactForm">
                 <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Name" required></div>
                 <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="Email" required></div>
                 <div class="field"><label for="message">Your message</label><textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea></div>
                 <button class="btn" type="submit" disabled style="background-color: #cccccc; color: #666666; cursor: not-allowed; border: 1px solid #999999;">Send message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
                 <div class="form-status" id="formStatus" aria-live="polite"></div>
-            </form>
+            </form> -->
         </section>
     </main>
 
