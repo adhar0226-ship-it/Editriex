@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6e8c8">
+    <meta name="description" content="Editriex Productions — crafting cinematic stories where Indian culture meets stunning visual narratives.">
+    <title>Editriex Productions — Visual Stories, Cultural Heart</title>
+    
+    <!-- Tailwind CSS for the "Who We Are" section -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for the "Who We Are" icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FDFBF7',
+                        creamDark: '#F4EFE6',
+                        tealDeep: '#103833',
+                        tealDark: '#0A2522',
+                        terracotta: '#A04723',
+                        terracottaLight: '#C6653E',
+                        goldAcc: '#D4AF37',
+                        goldLight: '#E8D288',
+                        warmBrown: '#8B5A2B',
+                        cardBg: '#FFF9ED'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+        :root {
+            --paper: #f7edda;
+            --paper2: #f1dfbd;
+            --ink: #171711;
+            --green: #123b32;
+            --green2: #1b5144;
+            --gold: #bd8b3d;
+            --gold2: #e3b967;
+            --rust: #9a4e26;
+            --line: rgba(89,57,23,.25);
+            --serif: 'Cinzel', 'Playfair Display', serif;
+            --body: 'DM Sans', sans-serif;
+            --shadow: 0 16px 45px rgba(55,34,13,.13);
+            --max: 1320px;
+        }
+
+        /* Global Reset & Base */
+        * { box-sizing: border-box }
+        html { scroll-behavior: smooth; scroll-padding-top: 88px }
+        body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); overflow-x: hidden }
+        a { color: inherit; text-decoration: none }
+        button, input, textarea { font: inherit }
+        button { cursor: pointer }
+
+        body:before {
+            content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 20; opacity: .13;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+        }
+
+        /* Header & Ornaments */
+        .top-ornament, .bottom-ornament { height: 17px; background-color: #e9d2a8; background-image: radial-gradient(circle at 8px 8px, #8b5a28 2px, transparent 2.5px), radial-gradient(circle at 22px 8px, #d49b40 3px, transparent 3.5px); background-size: 30px 17px; border-bottom: 1px solid #b98a4a; position: relative; z-index: 3 }
+        .top-ornament:after, .bottom-ornament:after { content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 7px; background: radial-gradient(ellipse at center top, transparent 55%, #b98a4a 57%, #b98a4a 62%, transparent 65%); background-size: 28px 9px }
+        .shell { max-width: 1500px; margin: auto }
+        .site-header { position: sticky; top: 0; z-index: 30; background: rgba(248,238,218,.93); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line) }
+        .nav-wrap { max-width: 1440px; margin: auto; min-height: 76px; padding: 10px clamp(18px, 4vw, 54px); display: flex; align-items: center; justify-content: space-between; gap: 20px }
+        .brand { display: flex; align-items: center; gap: 10px; min-width: 190px }
+        .brand-mark { width: 42px; height: 42px; border-radius: 13px; background: var(--green); color: var(--gold2); display: grid; place-items: center; border: 2px solid var(--gold); box-shadow: inset 0 0 0 3px rgba(227,185,103,.2) }
+        .brand-mark svg { width: 25px }
+        .brand-name { font: 700 17px/1 var(--serif); letter-spacing: -.5px }
+        .brand-name small { display: block; font: 600 9px/1.6 var(--body); letter-spacing: 2px }
+        .nav-links { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 34px) }
+        .nav-links a { font-size: 12px; font-weight: 600; position: relative; padding: 9px 0 }
+        .nav-links a:after { content: ""; position: absolute; left: 0; bottom: 3px; width: 0; height: 1px; background: var(--rust); transition: .3s }
+        .nav-links a:hover:after { width: 100% }
+        .menu-toggle { display: none; border: 1px solid var(--line); background: transparent; color: var(--green); border-radius: 10px; width: 42px; height: 42px }
+
+        /* Hero Section (From 3rd Codebase) */
+        .hero { padding: 42px 0 38px; min-height: 650px; display: flex; align-items: center; background: radial-gradient(ellipse at 77% 55%, rgba(204,155,75,.2), transparent 43%), linear-gradient(120deg, #f8edda, #f1e1c1) }
+        .hero-grid { display: grid; gap: 28px; align-items: center; width: min(100% - 64px, var(--max)); margin-inline: auto; }
+        .hero-copy { position: relative; z-index: 2 }
+        .hero-copy h1 { font-family: var(--serif); font-size: clamp(43px, 11vw, 82px); line-height: .88; margin: 18px 0; font-weight: 600; letter-spacing: -1.1px; text-transform: uppercase; }
+        .hero-copy h1 span { display: block; color: var(--green) }
+        .hero-subtitle { font-family: var(--serif); font-size: 22px; line-height: 1.08; max-width: 340px; margin-bottom: 12px; }
+        .hero-copy .body-copy { max-width: 350px; font-size: 11px; text-transform: uppercase; letter-spacing: .45px; line-height: 1.65; color: #514b3e; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px }
+        .hero-art { position: relative; min-height: 320px; display: flex; align-items: center; justify-content: center }
+        .hero-art:before { content: ""; position: absolute; width: 85%; height: 82%; border: 1px solid var(--gold); border-radius: 48% 48% 2px 2px; top: 10%; left: 8%; opacity: .8 }
+        .hero-art:after { content: ""; position: absolute; width: 70%; height: 68%; border: 1px solid #c99c59; border-radius: 48% 48% 0 0; top: 16%; left: 15%; opacity: .5 }
+        .hero-illustration { width: 100%; max-width: 590px; position: relative; z-index: 1; filter: drop-shadow(0 14px 13px rgba(67,43,15,.13)) }
+        .hanging-lights { position: absolute; top: 0; left: 5%; right: 3%; height: 48px; border-top: 1px solid var(--green); border-radius: 50%; z-index: 2 }
+        .hanging-lights:before, .hanging-lights:after { content: ""; position: absolute; top: -3px; width: 7px; height: 13px; background: var(--gold); border-radius: 0 0 6px 6px; box-shadow: 0 0 13px #d89b39 }
+        .hanging-lights:before { left: 24% } .hanging-lights:after { left: 72% }
+        .hero-caption { position: absolute; right: 2%; bottom: 0; font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--rust) }
+        .hero-bottom { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 10px 0; font-size: 9px; text-transform: uppercase; letter-spacing: 1.4px; color: var(--green); display: flex; justify-content: space-between; gap: 10px; width: min(100% - 64px, var(--max)); margin-inline: auto; }
+        .marquee { overflow: hidden; background: var(--green); color: #f6e5c3; padding: 12px 0; border-block: 3px double var(--gold) }
+        .marquee-track { display: flex; white-space: nowrap; gap: 35px; animation: marquee 30s linear infinite; width: max-content; font-family: var(--serif); font-size: 18px; letter-spacing: 1px }
+        .marquee-track span:after { content: "✦"; font-family: var(--sans); font-size: 11px; color: var(--gold2); margin-left: 35px }
+        @keyframes marquee { to { transform: translateX(-50%) } }
+        .section-kicker { font-size: 9px; text-transform: uppercase; letter-spacing: 3px; color: var(--rust); font-weight: 700; display: flex; align-items: center; gap: 10px }
+        .section-kicker:before { content: ""; width: 28px; height: 1px; background: var(--gold) }
+
+        /* General section styles */
+        .section-pad { padding: clamp(64px, 8vw, 112px) clamp(18px, 5vw, 76px) }
+        .eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--rust); font-weight: 700; display: flex; align-items: center; gap: 10px }
+        .eyebrow:before { content: ""; width: 28px; height: 1px; background: var(--gold) }
+        h1, h2, h3, p { margin-top: 0 }
+        .display { font: 700 clamp(35px, 5.2vw, 72px)/.99 var(--serif); letter-spacing: -2px; text-transform: uppercase }
+        .section-title { font: 600 clamp(27px, 3.6vw, 47px)/1.08 var(--serif); text-transform: uppercase; letter-spacing: -1.2px }
+        .lead { font-size: 15px; line-height: 1.8; color: #514637; max-width: 560px }
+        .ornate-frame { border: 1px solid var(--gold); outline: 1px solid rgba(189,139,61,.35); outline-offset: 5px; position: relative }
+        .ornate-frame:before, .ornate-frame:after { content: ""; position: absolute; width: 36px; height: 36px; border-color: var(--gold); border-style: solid; pointer-events: none }
+        .ornate-frame:before { top: 6px; left: 6px; border-width: 2px 0 0 2px }
+        .ornate-frame:after { right: 6px; bottom: 6px; border-width: 0 2px 2px 0 }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid var(--gold); border-radius: 30px; padding: 12px 19px; background: var(--green); color: #fff4d9; font-size: 10px; font-weight: 700; letter-spacing: .7px; text-transform: uppercase; box-shadow: 0 5px 0 rgba(87,52,17,.12); transition: transform .25s, background .25s }
+        .btn:hover { transform: translateY(-3px); background: var(--green2) }
+        .btn.secondary { background: transparent; color: var(--green); box-shadow: none }
+        .btn svg { width: 13px; height: 13px }
+
+        /* Video Grid */
+        .videos { background: #f7edda }
+        .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 34px }
+        .section-head p { max-width: 430px; margin: 0; color: #6c5c47; font-size: 13px; line-height: 1.7 }
+        .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px }
+        .video-card { position: relative; min-height: 220px; aspect-ratio: 16/9; background: linear-gradient(135deg, #17483c, #092c26); border: 5px double #c3944c; overflow: hidden; cursor: pointer; display: grid; place-items: center; box-shadow: var(--shadow) }
+        .video-card:before { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(230,190,111,.55) }
+        .video-card:after { content: ""; position: absolute; width: 140px; height: 140px; border: 1px solid rgba(230,190,111,.25); border-radius: 50%; box-shadow: 0 0 0 18px rgba(230,190,111,.06), 0 0 0 36px rgba(230,190,111,.04) }
+        .video-card:nth-child(2n) { background: linear-gradient(140deg, #754322, #2f261b) }
+        .video-card:nth-child(3n) { background: linear-gradient(140deg, #8a672f, #153d33) }
+        .play { z-index: 2; width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; background: #f7edda; color: #171711; border: 2px solid var(--gold); transition: .3s }
+        .video-card:hover .play { transform: scale(1.13) }
+        .play svg { width: 18px; margin-left: 3px }
+        .video-label { position: absolute; z-index: 2; bottom: 19px; color: #f8ebd1; text-align: center; font: 600 13px var(--serif); letter-spacing: 1px; text-transform: uppercase }
+        .video-card small { position: absolute; z-index: 2; top: 18px; left: 20px; color: #f3d69f; font-size: 9px; letter-spacing: 2px }
+
+        /* Founder Section */
+        .founder { background: #ead9b7; display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 6vw, 80px); align-items: center }
+        .founder-portrait { min-height: 480px; background: radial-gradient(circle at 50% 35%, #276050, #0c3028 70%); border: 8px double #c4934a; position: relative; display: grid; place-items: center; overflow: hidden; box-shadow: var(--shadow) }
+        .founder-portrait:before { content: ""; position: absolute; inset: 14px; border: 1px solid rgba(239,199,119,.5) }
+        .founder-portrait .arch { position: absolute; bottom: -5%; width: 78%; height: 90%; border: 3px solid #d6a44f; border-bottom: 0; border-radius: 48% 48% 0 0; box-shadow: inset 0 0 0 8px rgba(214,164,79,.1) }
+        .founder-portrait .portrait-placeholder { position: relative; z-index: 2; text-align: center; color: #f8e8c5; padding: 25px }
+        .portrait-placeholder svg { width: 68px; height: 68px; opacity: .7; margin-bottom: 14px }
+        .portrait-placeholder strong { display: block; font: 600 16px var(--serif) }
+        .portrait-placeholder span { font-size: 10px; letter-spacing: 1.4px }
+        .founder-svg { position: absolute; z-index: 3; inset: 0; width: 100%; height: 100%; object-fit: contain }
+        .founder-copy h2 { margin: 12px 0 18px }
+        .founder-copy .lead { font-size: 14px }
+        .founder-name { margin-top: 25px; padding-top: 18px; border-top: 1px solid var(--line) }
+        .founder-name b { display: block; font: 600 20px var(--serif); color: var(--green) }
+        .founder-name span { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #76552e }
+
+        /* Team Section */
+        .team { background: var(--green); color: #f8ebd1; overflow: hidden }
+        .team .eyebrow { color: var(--gold2) }
+        .team .lead { color: #d7c9ae }
+        .team-stage { height: 440px; position: relative; perspective: 1100px; display: flex; align-items: center; justify-content: center; margin: 25px auto 0; max-width: 900px }
+        .team-cylinder { width: 230px; height: 320px; position: relative; transform-style: preserve-3d; animation: rotateTeam 34s linear infinite }
+        .team-stage:hover .team-cylinder { animation-play-state: paused }
+        .team-member { position: absolute; inset: 0; width: 230px; height: 320px; backface-visibility: hidden; background: #f4e5c6; color: #1c241d; border: 5px double #c3944c; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; text-align: center; box-shadow: 0 15px 30px rgba(0,0,0,.2); transform: rotateY(calc(var(--i)*36deg)) translateZ(310px) }
+        .member-photo { height: 220px; background: linear-gradient(145deg, #d8bd8a, #a97742); border: 1px solid #ad7c37; display: grid; place-items: center; overflow: hidden }
+        .member-photo img { width: 100%; height: 100%; object-fit: cover }
+        .member-placeholder { font: 600 12px var(--serif); color: #6d4a20; letter-spacing: 1px }
+        .team-member h3 { font: 600 14px var(--serif); margin: 9px 0 3px }
+        .team-member p { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; margin: 0; color: #76552e }
+        @keyframes rotateTeam { from { transform: rotateY(0) } to { transform: rotateY(-360deg) } }
+        .team-controls { display: flex; justify-content: center; gap: 10px; margin-top: -10px }
+        .team-controls button { background: transparent; color: #f8ebd1; border: 1px solid #c3944c; border-radius: 30px; padding: 9px 16px; font-size: 10px }
+
+        /* Gallery */
+        .gallery { background: #f7edda }
+        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 190px; gap: 13px }
+        .gallery-item { position: relative; overflow: hidden; background: linear-gradient(145deg, #d7b77b, #a66b39); border: 4px double #bd8b3d; box-shadow: var(--shadow) }
+        .gallery-item:nth-child(1), .gallery-item:nth-child(6) { grid-row: span 2 }
+        .gallery-item:nth-child(3) { grid-column: span 2 }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .7s }
+        .gallery-item:hover img { transform: scale(1.08) }
+        .gallery-placeholder { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: #63431f; font: 600 12px var(--serif); letter-spacing: 1px; background: radial-gradient(circle at 50% 45%, rgba(255,245,218,.5), transparent 60%) }
+        .gallery-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 12px; background: linear-gradient(transparent, rgba(13,38,30,.9)); color: #fff2d7; font-size: 10px; letter-spacing: 1px; text-transform: uppercase }
+
+        /* Contact */
+        .contact { background: #ead9b7; display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(30px, 7vw, 100px); align-items: start }
+        .contact-info .lead { font-size: 13px }
+        .socials { display: flex; gap: 10px; margin-top: 24px }
+        .socials a { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; border: 1px solid #a97937; background: var(--green); color: #f6e5c4; transition: .25s }
+        .socials a:hover { transform: translateY(-4px); background: #215849 }
+        .socials svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round }
+        .contact-form { background: #f8eedb; padding: clamp(22px, 4vw, 42px); border: 1px solid var(--gold); box-shadow: var(--shadow) }
+        .field { margin-bottom: 16px }
+        .field label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1.4px; color: #76552e; margin-bottom: 7px; font-weight: 700 }
+        .field input, .field textarea { width: 100%; padding: 13px 14px; border: 1px solid #c9ae7e; background: #fffaf0; color: #1c1b16; outline: none; border-radius: 0; font-size: 13px }
+        .field input:focus, .field textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(18,59,50,.1) }
+        .field textarea { min-height: 125px; resize: vertical }
+        .form-note { font-size: 10px; color: #77664e; margin: 12px 0 0; line-height: 1.6 }
+        .form-status { font-size: 12px; margin-top: 12px; color: var(--green); min-height: 18px }
+
+        /* Footer */
+        footer { background: #102f28; color: #e8d7b4; padding: 45px clamp(18px, 5vw, 76px) 20px; position: relative }
+        .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 30px; padding-bottom: 32px }
+        .footer-brand p { font-size: 11px; line-height: 1.8; color: #c7b99d; max-width: 260px; margin-top: 14px }
+        .footer-col h4 { font: 600 13px var(--serif); color: #e7bb6c; margin: 0 0 15px; text-transform: uppercase }
+        .footer-col a, .footer-col p { display: block; font-size: 10px; line-height: 2.2; color: #d7c9ae; margin: 0 }
+        .footer-col a:hover { color: #e7bb6c }
+        .footer-social { display: flex; gap: 8px; margin-top: 12px }
+        .footer-social a { width: 30px; height: 30px; border: 1px solid rgba(231,187,108,.5); border-radius: 50%; display: grid; place-items: center }
+        .footer-social svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8 }
+        .footer-bottom { border-top: 1px solid rgba(231,187,108,.25); padding-top: 18px; display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; font-size: 9px; color: #c5b798 }
+        .legal-links { display: flex; gap: 16px }
+        .developer-strip { border-top: 1px solid rgba(231,187,108,.25); margin-top: 18px; padding-top: 15px; display: flex; justify-content: center; align-items: center; gap: 7px; font-size: 10px; color: #c5b798 }
+        .developer-strip a { color: #e7bb6c; border-bottom: 1px solid rgba(231,187,108,.5); font-weight: 700 }
+
+        /* Modals & Utilities */
+        .to-top { position: fixed; right: 20px; bottom: 20px; z-index: 25; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--gold); background: var(--green); color: #f8e8c5; display: grid; place-items: center; opacity: 0; pointer-events: none; transform: translateY(10px); transition: .3s }
+        .to-top.show { opacity: 1; pointer-events: auto; transform: none }
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease }
+        .reveal.visible { opacity: 1; transform: none }
+        .video-modal { position: fixed; inset: 0; background: rgba(7,18,15,.92); z-index: 60; display: none; align-items: center; justify-content: center; padding: 20px }
+        .video-modal.open { display: flex }
+        .modal-inner { width: min(950px, 100%); position: relative }
+        .modal-inner video { width: 100%; max-height: 75vh; background: #000; border: 1px solid var(--gold) }
+        .modal-close { position: absolute; right: 0; top: -48px; width: 38px; height: 38px; background: transparent; color: #fff; border: 1px solid var(--gold); border-radius: 50%; font-size: 22px }
+        .legal-modal { position: fixed; inset: 0; background: rgba(7,18,15,.78); z-index: 70; display: none; align-items: center; justify-content: center; padding: 20px }
+        .legal-modal.open { display: flex }
+        .legal-box { background: var(--paper); border: 1px solid var(--gold); padding: 30px; max-width: 650px; max-height: 80vh; overflow: auto; position: relative }
+        .legal-box h2 { font: 600 24px var(--serif) }
+        .legal-box p, .legal-box li { font-size: 13px; line-height: 1.7; color: #574a38 }
+        .legal-box button { position: absolute; right: 15px; top: 12px; border: 0; background: transparent; font-size: 24px }
+
+        /* Responsive */
+        @media(max-width:900px){
+            .hero-grid { grid-template-columns: 1fr; }
+            .about, .founder, .contact { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media(max-width:640px){
+            .nav-links { position: absolute; top: 66px; left: 12px; right: 12px; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 10px 18px; background: #f8eedb; border: 1px solid var(--gold); box-shadow: var(--shadow); }
+            .nav-links.open { display: flex; }
+            .nav-links a { padding: 13px 4px; border-bottom: 1px solid rgba(89,57,23,.1); }
+            .menu-toggle { display: grid; place-items: center; }
+            .video-grid { grid-template-columns: 1fr; }
+            .founder { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-ornament"></div>
+    
+    <header class="site-header">
+        <nav class="nav-wrap" aria-label="Main navigation">
+            <a class="brand" href="#home" aria-label="Editriex Productions home">
+                <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="13" height="12" rx="2"/><circle cx="9.5" cy="12" r="3"/><path d="m16 10 5-3v10l-5-3M5 4l2-2m5 2 2-2"/></svg></span>
+                <span class="brand-name">Editriex<small>PRODUCTIONS</small></span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+            <div class="nav-links" id="navLinks">
+                <a href="#home">Home</a><a href="#about">Who We Are</a><a href="#videos">Our Videos</a><a href="#founder">The Visionary</a><a href="#team">Our Team</a><a href="#gallery">Photography</a><a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section (From 3rd codebase) -->
+        <section class="hero" id="home">
+            <div class="hero-grid">
+                <div class="hero-copy reveal">
+                    <div class="section-kicker">Stories rooted in culture</div>
+                    <h1>CRAFTING <span>VISUAL</span> STORIES</h1>
+                    <p class="hero-subtitle">Where Indian culture meets stunning narratives.</p>
+                    <p class="body-copy">We bring great stories to life with rich visuals and cultural heart.</p>
+                    <div class="hero-actions">
+                        <a class="btn" href="#videos">Explore our work <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 10h13M10 4l6 6-6 6"/></svg></a>
+                        <a class="btn btn-outline" href="#videos"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M7 4v12l10-6z"/></svg> Watch reel</a>
+                    </div>
+                </div>
+                <div class="hero-art reveal delay-1">
+                    <div class="hanging-lights" aria-hidden="true"></div>
+                    <svg class="hero-illustration" viewBox="0 0 680 500" role="img" aria-label="Illustration of a traditional Indian film production set">
+                        <defs><linearGradient id="tent" x2="0" y2="1"><stop stop-color="#d79b3e"/><stop offset="1" stop-color="#8f3e20"/></linearGradient><linearGradient id="floor" x2="0" y2="1"><stop stop-color="#e4c58d"/><stop offset="1" stop-color="#b98b4b"/></linearGradient></defs>
+                        <ellipse cx="345" cy="450" rx="300" ry="23" fill="#9c743b" opacity=".22"/>
+                        <path d="M70 434h540v24H70z" fill="url(#floor)"/>
+                        <path d="M165 180Q340 -10 520 180v26H165z" fill="#164235" stroke="#a66d2c" stroke-width="5"/>
+                        <path d="M185 178Q340 30 500 178" fill="none" stroke="#e4b55e" stroke-width="12" stroke-dasharray="3 12"/>
+                        <path d="M165 183h355v21H165z" fill="url(#tent)" stroke="#e0b35d" stroke-width="3"/>
+                        <path d="M195 204v230M490 204v230" stroke="#7c4724" stroke-width="8"/>
+                        <path d="M210 218h265v205H210z" fill="#f2d9a9" stroke="#a66d2c" stroke-width="4"/>
+                        <path d="M227 230h230v180H227z" fill="#f8e8c7"/>
+                        <path d="M275 411v-88q0-50 45-50t45 50v88" fill="#a34c28" stroke="#6c321e" stroke-width="4"/>
+                        <path d="M288 410v-84q0-31 32-31t32 31v84" fill="#f1bd61"/>
+                        <path d="M290 413q30-28 61 0" fill="none" stroke="#e1a348" stroke-width="6"/>
+                        <path d="M240 252h200" stroke="#d8b16a" stroke-width="3"/>
+                        <path d="M260 266l18-17 18 17-18 18zM385 266l18-17 18 17-18 18z" fill="#c37a30"/>
+                        <path d="M90 420v-96q0-27 25-27t25 27v96" fill="#246052"/>
+                        <circle cx="115" cy="281" r="19" fill="#a96d43"/><path d="M96 278q3-26 25-19l13 12-6 7z" fill="#27221b"/>
+                        <path d="M101 320l-19 51 21 9 22-49 18 45 17-8-22-64" fill="#1b473d"/>
+                        <path d="M98 374l-6 58h15l13-52 10 52h15l-5-61" fill="#30251c"/>
+                        <path d="M130 324l38-20 8 10-36 28" fill="none" stroke="#a96d43" stroke-width="9"/>
+                        <path d="M157 302l28-17 10 9-28 20" fill="none" stroke="#a96d43" stroke-width="8"/>
+                        <path d="M166 283l27-14 13 6-27 16z" fill="#222d29"/>
+                        <rect x="185" y="267" width="36" height="24" rx="3" fill="#263b35" stroke="#d3a65b" stroke-width="2"/><circle cx="203" cy="279" r="7" fill="#111" stroke="#d3a65b" stroke-width="2"/>
+                        <path d="M191 291l-12 78M214 291l18 78M179 369h55" stroke="#443b2c" stroke-width="4"/>
+                        <circle cx="390" cy="276" r="19" fill="#9d603c"/><path d="M371 272q3-25 24-21l16 12-4 10z" fill="#24231d"/>
+                        <path d="M373 301q17-14 35 0l20 87h-73z" fill="#b44e2b"/>
+                        <path d="M382 307l-14 42 35 9 8-43" fill="#d17b3d"/>
+                        <path d="M382 388l-4 44h14l10-42 8 42h14l-4-46" fill="#28251e"/>
+                        <path d="M374 314l-27 35 9 8 34-27M408 314l28 29-8 10-31-25" fill="none" stroke="#9d603c" stroke-width="9"/>
+                        <rect x="340" y="340" width="36" height="28" rx="2" fill="#eee0c4" stroke="#8a592c" stroke-width="2"/><path d="M346 348h23M346 355h18" stroke="#8a592c" stroke-width="1.5"/>
+                        <rect x="505" y="280" width="92" height="64" rx="4" fill="#1c2824" stroke="#b47b37" stroke-width="4"/><rect x="512" y="287" width="78" height="49" fill="#d6b77d"/><path d="M519 326l23-24 16 15 14-17 13 26z" fill="#416b54"/>
+                        <path d="M548 345v29M530 375h37" stroke="#403a2d" stroke-width="5"/>
+                        <path d="M520 378v52M583 378v52" stroke="#433c30" stroke-width="4"/>
+                        <path d="M40 419q25-27 50 0-25 16-50 0" fill="#a74c20" stroke="#d69c45" stroke-width="3"/><path d="M64 414q-12-20 0-32 13 14 0 32" fill="#f0a42f"/><path d="M64 409q-5-12 0-19 7 9 0 19" fill="#fff0a9"/>
+                        <path d="M172 193q80 29 165 0t180 0" fill="none" stroke="#d58a24" stroke-width="5" stroke-dasharray="3 8"/>
+                        <g fill="#d58a24"><circle cx="202" cy="199" r="6"/><circle cx="235" cy="207" r="6"/><circle cx="270" cy="210" r="6"/><circle cx="310" cy="208" r="6"/><circle cx="350" cy="201" r="6"/><circle cx="390" cy="197" r="6"/><circle cx="430" cy="198" r="6"/></g>
+                        <g stroke="#174337" stroke-width="2" fill="none"><path d="M50 110q60 80 125 38M500 130q55 35 115-8"/></g>
+                        <g fill="#d7a34b"><circle cx="72" cy="135" r="5"/><circle cx="99" cy="153" r="5"/><circle cx="126" cy="163" r="5"/><circle cx="555" cy="143" r="5"/><circle cx="584" cy="145" r="5"/></g>
+                    </svg>
+                    <div class="hero-caption">Every frame has a story.</div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="hero-bottom">
+            <span>Independent creative production</span>
+            <span>Rooted in India · Made for the world</span>
+        </div>
+        
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <span>Culture</span><span>Stories</span><span>Cinema</span><span>Creativity</span><span>Tradition</span>
+                <span>Culture</span><span>Stories</span><span>Cinema</span><span>Creativity</span><span>Tradition</span>
+            </div>
+        </div>
+
+        <!-- Who We Are Section (From 2nd codebase) -->
+        <section id="about" class="py-20 bg-creamDark/60 border-y border-goldAcc/20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-6 space-y-6">
+                        <div class="inline-block border-b-2 border-goldAcc pb-1">
+                            <span class="text-terracotta uppercase font-bold tracking-[0.2em] text-xs">About Editriex</span>
+                        </div>
+                        <h2 class="font-serif text-4xl sm:text-5xl font-bold text-tealDeep">WHO WE ARE.</h2>
+                        <p class="text-lg text-tealDeep/80 leading-relaxed font-medium">
+                            Crafting cinematic stories that weave Indian culture, emotion, and creativity into memorable narratives. We bring vibrant visuals to life with passion and precision.
+                        </p>
+                        <p class="text-base text-tealDeep/70">
+                            Founded with a vision to honor our roots while embracing modern cinematic standards, Editriex Productions stands as a beacon of visual excellence across India.
+                        </p>
+                    </div>
+                    <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-tealDeep text-cream p-6 rounded-2xl shadow-xl border-2 border-goldAcc/40 relative overflow-hidden group hover:scale-[1.02] transition-transform">
+                            <div class="absolute -right-6 -bottom-6 text-tealDark opacity-40 text-8xl pointer-events-none"><i class="fa-solid fa-film"></i></div>
+                            <div class="w-12 h-12 rounded-xl bg-goldAcc/20 text-goldAcc flex items-center justify-center mb-4 text-xl"><i class="fa-solid fa-eye"></i></div>
+                            <h4 class="text-sm font-bold uppercase tracking-wider text-goldAcc/90">Highest Views</h4>
+                            <div class="font-serif text-4xl sm:text-5xl font-bold mt-2 text-cream">150K</div>
+                            <p class="text-xs text-cream/70 mt-1">Single hit milestone reached</p>
+                        </div>
+                        <div class="bg-tealDeep text-cream p-6 rounded-2xl shadow-xl border-2 border-goldAcc/40 relative overflow-hidden group hover:scale-[1.02] transition-transform">
+                            <div class="absolute -right-6 -bottom-6 text-tealDark opacity-40 text-8xl pointer-events-none"><i class="fa-solid fa-globe"></i></div>
+                            <div class="w-12 h-12 rounded-xl bg-goldAcc/20 text-goldAcc flex items-center justify-center mb-4 text-xl"><i class="fa-solid fa-chart-line"></i></div>
+                            <h4 class="text-sm font-bold uppercase tracking-wider text-goldAcc/90">Overall Views</h4>
+                            <div class="font-serif text-4xl sm:text-5xl font-bold mt-2 text-cream">1M+</div>
+                            <p class="text-xs text-cream/70 mt-1">Global audience engagement</p>
+                        </div>
+                        <div class="sm:col-span-2 bg-gradient-to-r from-tealDeep to-[#1B4D46] text-cream p-6 rounded-2xl shadow-xl border-2 border-goldAcc/40 flex flex-col sm:flex-row items-center justify-between gap-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 rounded-2xl bg-goldAcc text-tealDeep flex items-center justify-center text-2xl shadow"><i class="fa-solid fa-box-archive"></i></div>
+                                <div>
+                                    <h4 class="text-sm font-bold uppercase tracking-wider text-goldAcc">Content Pieces</h4>
+                                    <p class="text-xs text-cream/80">Total cinematic projects delivered</p>
+                                </div>
+                            </div>
+                            <div class="font-serif text-4xl sm:text-5xl font-bold text-goldAcc">114</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-16 bg-tealDark p-6 sm:p-8 rounded-2xl border-4 border-tealDeep shadow-2xl relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10 film-border"></div>
+                    <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div class="text-center md:text-left">
+                            <h3 class="font-serif text-2xl sm:text-3xl text-goldAcc font-bold">Connect Across Our Channels</h3>
+                            <p class="text-cream/80 text-sm mt-1">Follow our daily behind-the-scenes and cultural releases.</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <a href="https://www.instagram.com/editriex" target="_blank" class="w-14 h-14 rounded-full bg-cream text-tealDeep hover:bg-goldAcc hover:text-tealDark transition-all flex items-center justify-center text-2xl shadow-lg"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/@editriex01" target="_blank" class="w-14 h-14 rounded-full bg-cream text-tealDeep hover:bg-goldAcc hover:text-tealDark transition-all flex items-center justify-center text-2xl shadow-lg"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="https://linkedin.com" target="_blank" class="w-14 h-14 rounded-full bg-cream text-tealDeep hover:bg-goldAcc hover:text-tealDark transition-all flex items-center justify-center text-2xl shadow-lg"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="https://www.facebook.com/share/1KJdrNp8yf" target="_blank" class="w-14 h-14 rounded-full bg-cream text-tealDeep hover:bg-goldAcc hover:text-tealDark transition-all flex items-center justify-center text-2xl shadow-lg"><i class="fa-brands fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REST OF THE ORIGINAL FILE 1 CONTENT -->
+        <section class="videos section-pad" id="videos">
+            <div class="section-head reveal">
+                <div><div class="eyebrow">Selected stories</div><h2 class="section-title">Our videographic work.</h2></div>
+                <p>Watch selected films and reels right here. Add your own direct video file links below; visitors will stay on this website while watching.</p>
+            </div>
+            <div class="video-grid">
+                <button class="video-card reveal" data-video="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" data-title="Featured film one"><small>01 / FEATURED FILM</small><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><span class="video-label">Watch reel</span></button>
+                <button class="video-card reveal" data-video="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" data-title="Featured film two"><small>02 / CULTURE & PEOPLE</small><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><span class="video-label">Watch reel</span></button>
+                <button class="video-card reveal" data-video="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" data-title="Featured film three"><small>03 / BEHIND THE FRAME</small><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><span class="video-label">Watch reel</span></button>
+                <button class="video-card reveal" data-video="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" data-title="Featured film four"><small>04 / VISUAL DIARIES</small><span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span><span class="video-label">Watch reel</span></button>
+            </div>
+        </section>
+
+        <section class="founder section-pad" id="founder">
+            <div class="founder-portrait ornate-frame reveal">
+                <div class="arch"></div><div class="portrait-placeholder"><svg viewBox="0 0 64 64" fill="none" stroke="#e6bd70" stroke-width="1.3"><circle cx="32" cy="20" r="11"/><path d="M10 58c2-15 10-23 22-23s20 8 22 23M22 17c2-9 18-12 22 0"/></svg><strong>Founder portrait area</strong><span>Replace with founder SVG</span></div>
+                <img class="founder-svg" src="#" alt="Founder portrait" onerror="this.style.display='none'">
+            </div>
+            <div class="founder-copy reveal">
+                <div class="eyebrow">The person behind EditRex</div><h2 class="section-title">The founder<br>& visionary.</h2>
+                <p class="lead">Every creative journey begins with a point of view. The vision behind Editriex Productions is to bring people, culture and meaningful stories together through the power of visual media.</p>
+                <p class="lead">With a commitment to craft and a belief in the value of authentic storytelling, the founder leads the creative direction and the spirit of the work.</p>
+                <div class="founder-name"><b>Rajiv Sharma</b><span>Founder · Creative Director</span></div>
+            </div>
+        </section>
+
+        <section class="team section-pad" id="team">
+            <div class="section-head reveal">
+                <div><div class="eyebrow">The people behind every frame</div><h2 class="section-title">Our team.</h2></div>
+                <p>A creative team built on different strengths, shared curiosity and a love for bringing stories to life.</p>
+            </div>
+            <div class="team-stage reveal"><div class="team-cylinder" id="teamCylinder">
+                <article class="team-member" style="--i:0"><div class="member-photo"><img src="#" alt="M1" onerror="this.style.display='none'"><span class="member-placeholder">ADD MEMBER SVG</span></div><div><h3>Member Name 01</h3><p>Creative Director</p></div></article>
+                <article class="team-member" style="--i:1"><div class="member-photo"><img src="#" alt="M2" onerror="this.style.display='none'"><span class="member-placeholder">ADD MEMBER SVG</span></div><div><h3>Member Name 02</h3><p>Lead Photographer</p></div></article>
+                <article class="team-member" style="--i:2"><div class="member-photo"><img src="#" alt="M3" onerror="this.style.display='none'"><span class="member-placeholder">ADD MEMBER SVG</span></div><div><h3>Member Name 03</h3><p>Video Editor</p></div></article>
+                <article class="team-member" style="--i:3"><div class="member-photo"><img src="#" alt="M4" onerror="this.style.display='none'"><span class="member-placeholder">ADD MEMBER SVG</span></div><div><h3>Member Name 04</h3><p>Camera Operator</p></div></article>
+                <article class="team-member" style="--i:4"><div class="member-photo"><img src="#" alt="M5" onerror="this.style.display='none'"><span class="member-placeholder">ADD MEMBER SVG</span></div><div><h3>Member Name 05</h3><p>Production Assistant</p></div></article>
+                <article class="team-member" style="--i:5"><div class="member-photo"><img src="#" alt="M6" onerror="this.style.display='none'"><span class="member-placeholder">ADD MEMBER SVG</span></div><div><h3>Member Name 06</h3><p>Content Creator</p></div></article>
+                <article class="team-member" style="--i:6"><div class="member-photo"><img src="#" alt="M7" onerror="this.style.display='none'"><span class="member-placeholder">ADD MEMBER SVG</span></div><div><h3>Member Name 07</h3><p>Sound Designer</p></div></article>
+                <article class="team-member" style="--i:7"><div class="member-photo"><img src="#" alt="M8" onerror="this.style.display='none'"><span class="member-placeholder">ADD MEMBER SVG</span></div><div><h3>Member Name 08</h3><p>Creative Associate</p></div></article>
+                <article class="team-member" style="--i:8"><div class="member-photo"><img src="#" alt="M9" onerror="this.style.display='none'"><span class="member-placeholder">ADD MEMBER SVG</span></div><div><h3>Member Name 09</h3><p>Production Coordinator</p></div></article>
+                <article class="team-member" style="--i:9"><div class="member-photo"><img src="#" alt="M10" onerror="this.style.display='none'"><span class="member-placeholder">ADD MEMBER SVG</span></div><div><h3>Member Name 10</h3><p>Design & Visuals</p></div></article>
+            </div></div>
+            <div class="team-controls"><button id="teamPause">Pause rotation</button><button id="teamResume">Resume rotation</button></div>
+        </section>
+
+        <section class="gallery section-pad" id="gallery">
+            <div class="section-head reveal">
+                <div><div class="eyebrow">Frames worth remembering</div><h2 class="section-title">Photographic visuals.</h2></div>
+                <p>A flexible visual wall for portraits, cultural details, celebrations, landscapes and behind-the-scenes moments.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal"><div class="gallery-placeholder">PHOTOGRAPH 01</div><img src="#" alt="V1" onerror="this.style.display='none'"><span class="gallery-caption">Portraits & people</span></div>
+                <div class="gallery-item reveal"><div class="gallery-placeholder">PHOTOGRAPH 02</div><img src="#" alt="V2" onerror="this.style.display='none'"><span class="gallery-caption">Places & heritage</span></div>
+                <div class="gallery-item reveal"><div class="gallery-placeholder">PHOTOGRAPH 03</div><img src="#" alt="V3" onerror="this.style.display='none'"><span class="gallery-caption">Celebrations</span></div>
+                <div class="gallery-item reveal"><div class="gallery-placeholder">PHOTOGRAPH 04</div><img src="#" alt="V4" onerror="this.style.display='none'"><span class="gallery-caption">Culture in detail</span></div>
+                <div class="gallery-item reveal"><div class="gallery-placeholder">PHOTOGRAPH 05</div><img src="#" alt="V5" onerror="this.style.display='none'"><span class="gallery-caption">Behind the scenes</span></div>
+                <div class="gallery-item reveal"><div class="gallery-placeholder">PHOTOGRAPH 06</div><img src="#" alt="V6" onerror="this.style.display='none'"><span class="gallery-caption">Visual stories</span></div>
+                <div class="gallery-item reveal"><div class="gallery-placeholder">PHOTOGRAPH 07</div><img src="#" alt="V7" onerror="this.style.display='none'"><span class="gallery-caption">The everyday extraordinary</span></div>
+            </div>
+        </section>
+
+        <section class="contact section-pad" id="contact">
+            <div class="contact-info reveal">
+                <div class="eyebrow">Let's make something meaningful</div><h2 class="section-title">Let's craft<br>your story.</h2>
+                <p class="lead">Have a project, an idea or a moment you want to preserve? Tell us a little about it. We would love to hear from you.</p>
+                <p class="lead"><strong>Email</strong><br><a href="mailto:hello@Editriexproductions.in">hello@Editriexproductions.in</a></p>
+                <div class="socials">
+                    <a href="https://www.instagram.com/editriex" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+                    <a href="https://www.youtube.com/@editriex01" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22 12s0-4-1-5-3-1-9-1-8 0-9 1-1 5-1 5 0 4 1 5 3 1 9 1 8 0 9-1 1-5 1-5Z"/><path d="m10 9 5 3-5 3z"/></svg></a>
+                    <a href="https://linkedin.com" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M5 9v10M5 5v.01M10 19v-6a4 4 0 0 1 8 0v6M10 9v10"/></svg></a>
+                    <a href="https://www.facebook.com/share/1KJdrNp8yf" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 21v-8h3l.5-4H14V7c0-1.2.4-2 2-2h2V1.5C17.2 1.3 16.2 1 15 1c-3.2 0-5 1.9-5 5.3V9H7v4h3v8z"/></svg></a>
+                </div>
+            </div>
+            <form class="contact-form reveal" id="contactForm">
+                <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Name" required></div>
+                <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="Email" required></div>
+                <div class="field"><label for="message">Your message</label><textarea id="message" name="message" placeholder="Tell us about your project..." required></textarea></div>
+                <button class="btn" type="submit">Send message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+                <div class="form-status" id="formStatus" aria-live="polite"></div>
+            </form>
+        </section>
+    </main>
+
+    <div class="bottom-ornament"></div>
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand"><a class="brand" href="#home"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="13" height="12" rx="2"/><circle cx="9.5" cy="12" r="3"/><path d="m16 10 5-3v10l-5-3"/></svg></span><span class="brand-name">Editriex<small>PRODUCTIONS</small></span></a><p>Crafting cinematic stories where Indian culture meets stunning visual narratives.</p></div>
+            <div class="footer-col"><h4>Navigate</h4><a href="#home">Home</a><a href="#about">Who we are</a><a href="#videos">Our videos</a><a href="#founder">The visionary</a><a href="#team">Our team</a><a href="#gallery">Photography</a></div>
+            <div class="footer-col"><h4>Explore</h4><a href="#videos">Cinematic films</a><a href="#gallery">Photographic visuals</a><a href="#contact">Collaborations</a><a href="#contact">Get in touch</a></div>
+            <div class="footer-col"><h4>Contact details</h4><a href="mailto:hello@Editriexproductions.in">hello@Editriexproductions.in</a><p>Bengaluru, India</p></div>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span id="year"></span> Editriex Productions. All rights reserved.</span>
+            <div class="legal-links"><a href="#" data-legal="privacy">Privacy Policy</a><a href="#" data-legal="terms">Terms & Conditions</a><a href="#" data-legal="copyright">Copyright Notice</a></div>
+        </div>
+        <div class="developer-strip">Designed & developed by <a href="#" target="_blank">Your Name</a></div>
+    </footer>
+
+    <button class="to-top" id="toTop" aria-label="Back to top"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg></button>
+    <div class="video-modal" id="videoModal"><div class="modal-inner"><button class="modal-close" id="videoClose">×</button><video id="modalVideo" controls playsinline></video></div></div>
+    <div class="legal-modal" id="legalModal"><div class="legal-box"><button id="legalClose">×</button><div id="legalContent"></div></div></div>
+
+    <script>
+        const $ = (s, root = document) => root.querySelector(s), $$ = (s, root = document) => [...root.querySelectorAll(s)];
+        $('#year').textContent = new Date().getFullYear();
+
+        // Mobile navigation
+        const menu = $('#menuToggle'), nav = $('#navLinks');
+        menu.addEventListener('click', () => { const open = nav.classList.toggle('open'); menu.setAttribute('aria-expanded', String(open)); });
+        $$('#navLinks a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('open'); menu.setAttribute('aria-expanded', 'false'); }));
+
+        // Scroll reveals
+        const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }), { threshold: .12 });
+        $$('.reveal').forEach(el => observer.observe(el));
+
+        // Back to top
+        const topButton = $('#toTop');
+        window.addEventListener('scroll', () => topButton.classList.toggle('show', window.scrollY > 500), { passive: true });
+        topButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Video Modal
+        const videoModal = $('#videoModal'), video = $('#modalVideo');
+        $$('.video-card').forEach(card => card.addEventListener('click', () => { video.src = card.dataset.video; videoModal.classList.add('open'); video.play().catch(() => {}); }));
+        function closeVideo() { video.pause(); video.removeAttribute('src'); video.load(); videoModal.classList.remove('open'); }
+        $('#videoClose').addEventListener('click', closeVideo);
+        videoModal.addEventListener('click', e => { if (e.target === videoModal) closeVideo(); });
+
+        // Team controls
+        const cylinder = $('#teamCylinder');
+        $('#teamPause').addEventListener('click', () => cylinder.style.animationPlayState = 'paused');
+        $('#teamResume').addEventListener('click', () => cylinder.style.animationPlayState = 'running');
+
+        // Contact Form
+        $('#contactForm').addEventListener('submit', e => {
+            e.preventDefault();
+            const name = $('#name').value.trim(), email = $('#email').value.trim(), message = $('#message').value.trim();
+            const subject = encodeURIComponent('Project enquiry from ' + name);
+            const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+            window.location.href = 'mailto:hello@Editriexproductions.in?subject=' + subject + '&body=' + body;
+        });
+
+        // Legal Modals
+        const legal = {
+            privacy: `<h2>Privacy Policy</h2><p>Editriex Productions respects your privacy. This website does not store your data.</p>`,
+            terms: `<h2>Terms & Conditions</h2><p>Content provided for general information about our creative work.</p>`,
+            copyright: `<h2>Copyright Notice</h2><p>© ${new Date().getFullYear()} Editriex Productions. All rights reserved.</p>`
+        };
+        const legalModal = $('#legalModal');
+        $$('[data-legal]').forEach(a => a.addEventListener('click', e => {
+            e.preventDefault();
+            $('#legalContent').innerHTML = legal[a.dataset.legal];
+            legalModal.classList.add('open');
+        }));
+        $('#legalClose').addEventListener('click', () => legalModal.classList.remove('open'));
+    </script>
+</body>
+</html>
