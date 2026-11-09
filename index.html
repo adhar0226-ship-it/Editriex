@@ -554,13 +554,17 @@
         $('#teamResume').addEventListener('click', () => cylinder.style.animationPlayState = 'running');
 
         // Contact Form
-        $('#contactForm').addEventListener('submit', e => {
-            e.preventDefault();
-            const name = $('#name').value.trim(), email = $('#email').value.trim(), message = $('#message').value.trim();
-            const subject = encodeURIComponent('Project enquiry from ' + name);
-            const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
-            window.location.href = 'mailto:hello@Editriexproductions.in?subject=' + subject + '&body=' + body;
-        });
+const contactForm = $('#contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const name = $('#name').value.trim(), email = $('#email').value.trim(), message = $('#message').value.trim();
+        const subject = encodeURIComponent('Project enquiry from ' + name);
+        const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+        window.location.href = 'mailto:hello@Editriexproductions.in?subject=' + subject + '&body=' + body;
+    });
+}
+
 
         // Legal Modals
         const legal = {
